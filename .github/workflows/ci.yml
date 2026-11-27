@@ -1,0 +1,24 @@
+name: CI
+
+# se ejecuta cuando se abre o se actualiza un pull request hacia main
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      # baja el codigo del repo
+      - uses: actions/checkout@v4
+
+      # deja node listo en la maquina de github
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # instala dependencias, revisa con eslint y compila
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
