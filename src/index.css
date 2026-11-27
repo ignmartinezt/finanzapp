@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* colores del tema gris oscuro con amarillo */
+@theme {
+  --color-fondo: #1c1c1c;
+  --color-superficie: #272727;
+  --color-acento: #facc15;
+  --color-campo: #fde68a;
+  --color-tinta: #1a1a1a;
+  --color-texto: #ececec;
+
+  /* fuente principal de la app */
+  --font-sans: 'DM Sans', sans-serif;
+}
