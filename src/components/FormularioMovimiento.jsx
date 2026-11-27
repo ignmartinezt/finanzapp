@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { categorias } from '../data/categorias'
 import { agregarMovimiento } from '../data/movimientos'
 
+// estilo compartido por todos los campos del formulario
+const estiloCampo =
+    'rounded-lg p-3 bg-campo text-tinta font-semibold placeholder:font-medium placeholder:text-tinta/60 shadow-md focus:outline-none focus:ring-2 focus:ring-texto'
+
+
 function FormularioMovimiento() {
     // un estado por cada campo del formulario
     const [tipo, setTipo] = useState('gasto')
@@ -26,12 +31,12 @@ function FormularioMovimiento() {
         if (Number(monto) <= 0 || !categoria) return
 
         const movimiento = {
-        tipo,
-        monto: Number(monto),
-        // fecha de hoy con hora local, en-CA da el formato AAAA-MM-DD
-        fecha: new Date().toLocaleDateString('en-CA'),
-        descripcion,
-        categoria,
+            tipo,
+            monto: Number(monto),
+            // fecha de hoy con hora local, en-CA da el formato AAAA-MM-DD
+            fecha: new Date().toLocaleDateString('en-CA'),
+            descripcion,
+            categoria,
         }
 
         await agregarMovimiento(movimiento)
@@ -45,7 +50,7 @@ function FormularioMovimiento() {
 
     return (
         <form onSubmit={guardar} className="flex flex-col gap-3 p-4">
-            <select value={tipo} onChange={cambiarTipo} className="border rounded p-2">
+            <select value={tipo} onChange={cambiarTipo} className={estiloCampo}>
                 <option value="gasto">Gasto</option>
                 <option value="ingreso">Ingreso</option>
             </select>
@@ -56,14 +61,13 @@ function FormularioMovimiento() {
                 placeholder="Monto"
                 value={monto}
                 onChange={(e) => setMonto(e.target.value.replace(/\D/g, ''))} // solo permite numeros
-                className="border rounded p-2"
+                className={estiloCampo}
             />
 
             <select
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
-                className="border rounded p-2"
-            >
+                className={estiloCampo}            >
                 <option value="">Selecciona una categoría</option>
                 {categoriasDelTipo.map((c) => (
                     <option key={c.id} value={c.id}>
@@ -77,10 +81,13 @@ function FormularioMovimiento() {
                 placeholder="Descripción"
                 value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
-                className="border rounded p-2"
+                className={estiloCampo}
             />
 
-            <button type="submit" className="bg-blue-600 text-white rounded p-2">
+            <button
+                type="submit"
+                className="bg-acento text-tinta font-semibold rounded-lg p-3 shadow-md hover:brightness-110 transition"
+            >
                 Guardar
             </button>
         </form>
