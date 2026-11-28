@@ -11,4 +11,7 @@
 
   /* fuente principal de la app */
   --font-sans: 'DM Sans', sans-serif;
+
+  /* fuente para titulos y botones */
+--font-titulo: 'Unbounded', sans-serif;
 }
