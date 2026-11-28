@@ -1,6 +1,6 @@
 name: Deploy a GitHub Pages
 
-# se ejecuta cuando hay push a main o a mano desde la pestana actions
+# se ejecuta con push a main o a mano desde la pestana actions
 on:
   push:
     branches: [main]
@@ -12,30 +12,38 @@ permissions:
   pages: write
   id-token: write
 
+# evita que dos deploys corran al mismo tiempo
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  # primer trabajo, compila y sube la carpeta dist
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # baja el codigo del repo
       - uses: actions/checkout@v4
 
-      # deja node listo en la maquina de github
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      # instala dependencias y compila la app
       - run: npm ci
       - run: npm run build
 
-      # sube la carpeta dist y la publica
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
+  # segundo trabajo, publica cuando build ya termino
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
