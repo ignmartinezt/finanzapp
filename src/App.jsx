@@ -38,7 +38,7 @@ function App() {
 
         {/* el formulario ahora vive dentro del panel */}
         <PanelMovimiento abierto={panelAbierto} onCerrar={() => setPanelAbierto(false)}>
-          <FormularioMovimiento />
+          <FormularioMovimiento onGuardado={() => setPanelAbierto(false)} />
         </PanelMovimiento>
       </>
     )

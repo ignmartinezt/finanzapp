@@ -8,8 +8,7 @@ const estiloCampo =
     'rounded-lg p-3 bg-campo text-tinta font-semibold placeholder:font-medium placeholder:text-tinta/60 shadow-md focus:outline-none focus:ring-2 focus:ring-texto'
 
 
-function FormularioMovimiento() {
-    // un estado por cada campo del formulario
+function FormularioMovimiento({ onGuardado }) {    // un estado por cada campo del formulario
     const [tipo, setTipo] = useState('gasto')
     const [monto, setMonto] = useState('')
     const [descripcion, setDescripcion] = useState('')
@@ -22,6 +21,7 @@ function FormularioMovimiento() {
     const cambiarTipo = (e) => {
         setTipo(e.target.value)
         setCategoria('')
+        onGuardado?.()
     }
 
     const guardar = async (e) => {
