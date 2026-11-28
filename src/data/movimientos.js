@@ -18,3 +18,17 @@ export async function obtenerMovimientos() {
 export async function eliminarMovimiento(id) {
     await db.movimientos.delete(id)
 }
+
+// trae los movimientos desde el ultimo sueldo hasta hoy
+// si todavia no hay ningun sueldo devuelve una lista vacia
+export async function obtenerCicloActual() {
+  // orderBy id deja los movimientos en el orden en que se registraron
+    const todos = await db.movimientos.orderBy('id').toArray()
+
+  // posicion del ultimo sueldo, -1 si no hay ninguno
+    const indice = todos.findLastIndex((m) => m.categoria === 'sueldo')
+    if (indice === -1) return []
+
+  // desde el sueldo hasta el final
+    return todos.slice(indice)
+}
