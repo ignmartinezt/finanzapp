@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { categorias } from '../data/categorias'
 import { agregarMovimiento } from '../data/movimientos'
+import { formatearCLP } from '../utils/formato'
 
 // estilo compartido por todos los campos del formulario
 const estiloCampo =
@@ -59,8 +60,8 @@ function FormularioMovimiento() {
                 type="text"
                 inputMode="numeric"
                 placeholder="Monto"
-                value={monto}
-                onChange={(e) => setMonto(e.target.value.replace(/\D/g, ''))} // solo permite numeros
+                value={formatearCLP(monto)}
+                onChange={(e) => setMonto(e.target.value.replace(/\D/g, '').replace(/^0+/, ''))} // solo permite numeros
                 className={estiloCampo}
             />
 
