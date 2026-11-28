@@ -30,7 +30,7 @@ function PantallaSueldo() {
 
     return (
         <form onSubmit={guardarSueldo} className="flex w-full max-w-md flex-col gap-4 p-4">
-            <h1 className="font-titulo text-2xl font-bold">Ingresa tu sueldo</h1>
+            <h1 className="font-titulo text-2xl font-bold">INGRESA TU SUELDO</h1>
 
             <input
                 type="text"
@@ -45,7 +45,7 @@ function PantallaSueldo() {
                 type="submit"
                 className="bg-acento text-tinta font-titulo font-bold text-sm rounded-lg p-3 shadow-md hover:brightness-110 transition"
             >
-                Agregar sueldo
+                AGREGAR SUELDO
             </button>
         </form>
     )

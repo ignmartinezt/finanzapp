@@ -59,7 +59,7 @@ function FormularioMovimiento() {
             <input
                 type="text"
                 inputMode="numeric"
-                placeholder="MONTO"
+                placeholder="Monto"
                 value={formatearCLP(monto)}
                 onChange={(e) => setMonto(e.target.value.replace(/\D/g, '').replace(/^0+/, ''))} // solo permite numeros
                 className={estiloCampo}
@@ -79,7 +79,7 @@ function FormularioMovimiento() {
 
             <input
                 type="text"
-                placeholder="DESCRIPCIÓN"
+                placeholder="Descripción"
                 value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
                 className={estiloCampo}

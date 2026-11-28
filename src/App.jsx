@@ -4,8 +4,7 @@ import FormularioMovimiento from './components/FormularioMovimiento'
 import ListaMovimientos from './components/ListaMovimientos'
 import PantallaSueldo from './components/PantallaSueldo'
 import { obtenerCicloActual } from './data/movimientos'
-import { calcularDisponible } from './utils/calculos'
-import { formatearCLP } from './utils/formato'
+import DonaGastos from './components/DonaGastos'
 
 function App() {
   // movimientos desde el ultimo sueldo, se actualiza sola
@@ -21,13 +20,10 @@ function App() {
     contenido = (
       <>
         <section className="w-full max-w-md px-4 text-center">
-          <p className="text-sm opacity-70">Disponible</p>
-          <p className="font-titulo text-3xl font-bold">
-            {formatearCLP(calcularDisponible(ciclo))}
-          </p>
+          <DonaGastos ciclo={ciclo} />
+          <FormularioMovimiento />
+          <ListaMovimientos />
         </section>
-        <FormularioMovimiento />
-        <ListaMovimientos />
       </>
     )
   }
