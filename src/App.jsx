@@ -4,8 +4,6 @@ import FormularioMovimiento from './components/FormularioMovimiento'
 import ListaMovimientos from './components/ListaMovimientos'
 import PantallaSueldo from './components/PantallaSueldo'
 import { obtenerCicloActual } from './data/movimientos'
-import { calcularDisponible } from './utils/calculos'
-import { formatearCLP } from './utils/formato'
 import DonaGastos from './components/DonaGastos'
 
 function App() {
