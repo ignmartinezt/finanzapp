@@ -1,16 +1,41 @@
+import { useLiveQuery } from 'dexie-react-hooks'
 import BarraSuperior from './components/BarraSuperior'
 import FormularioMovimiento from './components/FormularioMovimiento'
 import ListaMovimientos from './components/ListaMovimientos'
+import PantallaSueldo from './components/PantallaSueldo'
+import { obtenerCicloActual } from './data/movimientos'
+import { calcularDisponible } from './utils/calculos'
+import { formatearCLP } from './utils/formato'
 
 function App() {
+  // movimientos desde el ultimo sueldo, se actualiza sola
+  const ciclo = useLiveQuery(obtenerCicloActual)
+
+  let contenido = null
+
+  if (ciclo && ciclo.length === 0) {
+    // todavia no hay sueldo, se pide para iniciar el ciclo
+    contenido = <PantallaSueldo />
+  } else if (ciclo) {
+    // hay ciclo activo, se muestra el disponible y la app normal
+    contenido = (
+      <>
+        <section className="w-full max-w-md px-4 text-center">
+          <p className="text-sm opacity-70">Disponible</p>
+          <p className="font-titulo text-3xl font-bold">
+            {formatearCLP(calcularDisponible(ciclo))}
+          </p>
+        </section>
+        <FormularioMovimiento />
+        <ListaMovimientos />
+      </>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-fondo text-texto">
       <BarraSuperior />
-      {/* el formulario queda centrado debajo de la barra */}
-      <main className="flex flex-col items-center gap-4 p-4">
-        <FormularioMovimiento />
-        <ListaMovimientos />
-      </main>
+      <main className="flex flex-col items-center gap-4 p-4">{contenido}</main>
     </div>
   )
 }
