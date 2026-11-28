@@ -17,7 +17,7 @@ function ListaMovimientos() {
     if (!movimientos) return null
 
     if (movimientos.length === 0) {
-        return <p className="p-4 text-center opacity-70">Todavía no hay movimientos</p>
+        return <p className="p-4 text-center opacity-70">TODAVIA NO HAY MOVIMIENTOS</p>
     }
 
     return (
