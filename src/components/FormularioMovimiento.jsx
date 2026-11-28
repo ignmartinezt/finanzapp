@@ -52,14 +52,14 @@ function FormularioMovimiento() {
     return (
         <form onSubmit={guardar} className="flex flex-col gap-3 p-4">
             <select value={tipo} onChange={cambiarTipo} className={estiloCampo}>
-                <option value="gasto">Gasto</option>
-                <option value="ingreso">Ingreso</option>
+                <option value="gasto">GASTO</option>
+                <option value="ingreso">INGRESO</option>
             </select>
 
             <input
                 type="text"
                 inputMode="numeric"
-                placeholder="Monto"
+                placeholder="MONTO"
                 value={formatearCLP(monto)}
                 onChange={(e) => setMonto(e.target.value.replace(/\D/g, '').replace(/^0+/, ''))} // solo permite numeros
                 className={estiloCampo}
@@ -69,7 +69,7 @@ function FormularioMovimiento() {
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
                 className={estiloCampo}            >
-                <option value="">Selecciona una categoría</option>
+                <option value="">SELECCIONA UNA CATEGORÍA</option>
                 {categoriasDelTipo.map((c) => (
                     <option key={c.id} value={c.id}>
                         {c.nombre}
@@ -79,7 +79,7 @@ function FormularioMovimiento() {
 
             <input
                 type="text"
-                placeholder="Descripción"
+                placeholder="DESCRIPCIÓN"
                 value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
                 className={estiloCampo}
@@ -87,9 +87,8 @@ function FormularioMovimiento() {
 
             <button
                 type="submit"
-                className="bg-acento text-tinta font-semibold rounded-lg p-3 shadow-md hover:brightness-110 transition"
-            >
-                Guardar
+                className="bg-acento text-tinta font-titulo font-bold text-sm rounded-lg p-3 shadow-md hover:brightness-110 transition"            >
+                GUARDAR
             </button>
         </form>
     )
