@@ -1,9 +1,9 @@
 export const categorias = [
-    {id: 'alimentacion', nombre: 'Alimentación', tipo: 'gasto'},
-    {id: 'transporte', nombre: 'Transporte', tipo: 'gasto'},
-    {id: 'salud', nombre: 'Salud', tipo: 'gasto'},
-    {id: 'ocio', nombre: 'Ocio', tipo: 'gasto'},
-    {id: 'otros-gastos', nombre: 'Otros Gastos', tipo: 'gasto'},
-    {id: 'sueldo', nombre: 'Sueldo', tipo: 'ingreso'},
-    {id: 'otros-ingresos', nombre: 'Otros Ingresos', tipo: 'ingreso'},
+    {id: 'alimentacion', nombre: 'ALIMENTACIÓN', tipo: 'gasto'},
+    {id: 'transporte', nombre: 'TRANSPORTE', tipo: 'gasto'},
+    {id: 'salud', nombre: 'SALUD', tipo: 'gasto'},
+    {id: 'ocio', nombre: 'OCIO', tipo: 'gasto'},
+    {id: 'otros-gastos', nombre: 'OTROS GASTOS', tipo: 'gasto'},
+    {id: 'sueldo', nombre: 'SUELDO', tipo: 'ingreso'},
+    {id: 'otros-ingresos', nombre: 'OTROS INGRESOS', tipo: 'ingreso'},
 ]

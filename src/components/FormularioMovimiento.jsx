@@ -50,7 +50,7 @@ function FormularioMovimiento() {
 
 
     return (
-        <form onSubmit={guardar} className="flex flex-col gap-3 p-4">
+        <form onSubmit={guardar} className="flex w-full max-w-md flex-col gap-3 p-4">
             <select value={tipo} onChange={cambiarTipo} className={estiloCampo}>
                 <option value="gasto">GASTO</option>
                 <option value="ingreso">INGRESO</option>

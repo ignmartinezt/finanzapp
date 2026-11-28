@@ -13,3 +13,8 @@ export async function agregarMovimiento(movimiento) {
 export async function obtenerMovimientos() {
     return await db.movimientos.orderBy('fecha').reverse().toArray()
 }
+
+// borra un movimiento segun su id
+export async function eliminarMovimiento(id) {
+    await db.movimientos.delete(id)
+}
